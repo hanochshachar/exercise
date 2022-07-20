@@ -1,3 +1,4 @@
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -34,36 +35,53 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-function handleLoad() {
+exports.__esModule = true;
+exports.extractIP = void 0;
+function extractIP(req, res) {
     return __awaiter(this, void 0, void 0, function () {
-        var data, _a, error_1;
-        return __generator(this, function (_b) {
-            switch (_b.label) {
+        var networkInterfaces, nets, results, _i, _a, name, _b, _c, net, familyV4Value, error_1;
+        return __generator(this, function (_d) {
+            switch (_d.label) {
                 case 0:
-                    _b.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, axios.get('/IP')];
+                    _d.trys.push([0, 7, , 8]);
+                    networkInterfaces = require('os').networkInterfaces;
+                    nets = networkInterfaces();
+                    results = Object.create(null);
+                    _i = 0, _a = Object.keys(nets);
+                    _d.label = 1;
                 case 1:
-                    data = (_b.sent()).data;
-                    console.log(data);
-                    _a = data;
-                    console.log(Object.values(data)[1]);
-                    displayIP(Object.values(data)[1]);
-                    return [3 /*break*/, 3];
+                    if (!(_i < _a.length)) return [3 /*break*/, 6];
+                    name = _a[_i];
+                    _b = 0, _c = nets[name];
+                    _d.label = 2;
                 case 2:
-                    error_1 = _b.sent();
-                    console.log(error_1);
-                    return [3 /*break*/, 3];
-                case 3: return [2 /*return*/];
+                    if (!(_b < _c.length)) return [3 /*break*/, 5];
+                    net = _c[_b];
+                    familyV4Value = typeof net.family === 'string' ? 'IPv4' : 4;
+                    if (!(net.family === familyV4Value && !net.internal)) return [3 /*break*/, 4];
+                    if (!results[name]) {
+                        results[name] = [];
+                    }
+                    return [4 /*yield*/, results[name].push(net.address)];
+                case 3:
+                    _d.sent();
+                    _d.label = 4;
+                case 4:
+                    _b++;
+                    return [3 /*break*/, 2];
+                case 5:
+                    _i++;
+                    return [3 /*break*/, 1];
+                case 6:
+                    res.send(results);
+                    return [3 /*break*/, 8];
+                case 7:
+                    error_1 = _d.sent();
+                    res.send({ error: error_1.message });
+                    return [3 /*break*/, 8];
+                case 8: return [2 /*return*/];
             }
         });
     });
 }
-function displayIP(IP) {
-    try {
-        var root = document.querySelector('#root');
-        root.innerHTML = "" + IP;
-    }
-    catch (error) {
-        console.log(error);
-    }
-}
+exports.extractIP = extractIP;
