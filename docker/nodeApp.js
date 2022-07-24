@@ -8,7 +8,7 @@ const port = 9090;
 
 
 app.get('/', (req, res) => {
-    res.send(os.hostname());
+    res.send('hello world');
 });
 
 

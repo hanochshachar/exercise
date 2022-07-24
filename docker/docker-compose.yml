@@ -6,7 +6,7 @@ services:
   backend:
     image: node_test
     build:
-      context: ./backend
+      context: ../webApp
       dockerfile: ./Nginx.Dockerfile
     ports:
       - "9090:9090"
