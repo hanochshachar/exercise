@@ -1,0 +1,31 @@
+version: '3.4'
+services:
+  frontend:
+    image: node_test
+    build: ./frontend/
+  backend:
+    image: node_test
+    build:
+      context: ./backend
+      dockerfile: ./Nginx.Dockerfile
+    ports:
+      - "9090:9090"
+    restart: always
+  # custom:
+  #   build: ~/custom
+
+    # services:
+  nginx:
+    build:
+      context : ./backend/
+      dockerfile: Nginx.Dockerfile
+    depends_on:
+      - api
+    ports:
+      - "9090:9090"
+    restart: always
+  api:
+    build: .
+    environment:
+      NODE_ENV: production
+    restart: always

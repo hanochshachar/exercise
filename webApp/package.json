@@ -2,8 +2,7 @@
   "name": "webapp",
   "version": "1.0.0",
   "description": "",
-  "type": "module",
-  "main": "src/server.ts",
+  "main": "server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "NODE_PATH=./build node build/index.js",

@@ -4,7 +4,6 @@ var os = require("os");
 // dotenv.config();
 
 const app = express();
-const app1 = express();
 
 app.use(express.static('public'));
 app.use(express.json());

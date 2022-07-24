@@ -1,31 +1,11 @@
-// {
-//   "compilerOptions": {
-//     "module": "commonjs",
-//     "esModuleInterop": true,
-//     "target": "es6",
-//     "moduleResolution": "node",
-//     "sourceMap": true,
-//     "outDir": "dist"
-//   },
-//   "lib": ["es2015"]
-// }
 {
-  "compilerOptions":
-    {
-      "module": "commonjs",
-      "esModuleInterop": true,
-      "lib": ["es6"],
-      "strict": true,
-      "rootDir": ".", 
-      "noEmitOnError": true,
-      "noImplicitAny": true,
-      "experimentalDecorators": true, // for typeorm
-      "emitDecoratorMetadata": true,
-      "baseUrl": "./src",
-      "target": "esnext",
-      "moduleResolution": "node",
-      "outDir": "./build"
-    },
-  "include": ["./src"],
-  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "target": "es6",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "outDir": "dist"
+  },
+  "lib": ["es2015"]
 }
