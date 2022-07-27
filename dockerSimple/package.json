@@ -1,12 +1,10 @@
 {
   "name": "docker",
   "version": "1.0.0",
-  "description": "",
-  "type": "module",
-  "main": "nodeApp.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "NODE_PATH=./build node build/index.js",
+    "start": "node ./server.js",
     "build": "tsc -b .",
     "dev": "nodemon src/index.ts"
   },
@@ -26,5 +24,6 @@
     "mjs": "^1.0.0",
     "sudo": "^1.0.3",
     "ts-node": "^10.9.1"
-  }
+  },
+  "description": ""
 }

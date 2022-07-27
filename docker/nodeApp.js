@@ -5,7 +5,7 @@ dotenv.config();
 const app = express();
  
 const port = 9090;
-
+app.use(express.json());
 
 app.get('/', (req, res) => {
     res.send('hello world');

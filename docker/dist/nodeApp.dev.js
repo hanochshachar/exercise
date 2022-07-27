@@ -9,6 +9,7 @@ var os = require("os");
 dotenv.config();
 var app = express();
 var port = 9090;
+app.use(express.json());
 app.get('/', function (req, res) {
   res.send('hello world');
 });

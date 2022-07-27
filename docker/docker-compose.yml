@@ -1,13 +1,13 @@
 version: '3.4'
 services:
   frontend:
-    image: node_test
-    build: ./frontend/
+    image: node_test:1.0.0
+    # build: ./frontend/
   backend:
-    image: node_test
-    build:
+    # image: node_test:1.0.0
+    build: 
       context: ../webApp
-      dockerfile: ./Nginx.Dockerfile
+      dockerfile: Dockerfile
     ports:
       - "9090:9090"
     restart: always
@@ -17,15 +17,15 @@ services:
     # services:
   nginx:
     build:
-      context : ./backend/
+      context : .
       dockerfile: Nginx.Dockerfile
     depends_on:
       - api
     ports:
-      - "9090:9090"
+      - "80:80"
     restart: always
-  api:
-    build: .
-    environment:
-      NODE_ENV: production
-    restart: always
+  # api:
+    # build: .
+  #   environment:
+  #     NODE_ENV: production
+  #   restart: always
