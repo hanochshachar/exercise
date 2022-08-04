@@ -35,5 +35,7 @@ jobs:
         ECR_REPOSITORY: docker_nodejs_demo
         IMAGE_TAG: nodejs_demo_image
       run: |
-        docker docker build -t moshe .
-        docker push docker tag moshe:latest 930354804502.dkr.ecr.us-west-2.amazonaws.com/moshe:latest
+        docker build -t moshe:latest -t moshe:imageName .
+        docker tag moshe:latest 930354804502.dkr.ecr.us-west-2.amazonaws.com/moshe:latest
+        echo ${{ github }}
+        docker push 930354804502.dkr.ecr.us-west-2.amazonaws.com/moshe:latest
