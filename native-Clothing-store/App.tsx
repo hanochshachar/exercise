@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { useNavigation } from '@react-navigation/native';
 
 import Home from "./screens/Home";
 import Exhibition from "./screens/Exhibition";
@@ -9,6 +10,7 @@ import Cart from "./screens/Cart";
 
 export default function App() {
   const Tab = createBottomTabNavigator();
+  const navigation = useNavigation();
   return (
     <NavigationContainer>
       <Tab.Navigator >

@@ -18,9 +18,10 @@ import Winter from "./innerScreens/Winter";
 import Summer from "./innerScreens/Summer";
 import Underwire from "./innerScreens/Underwire";
 import Shoes from "./innerScreens/Shoes";
+import Home1 from './Home'
 
-export default function Home() {
-  const collections: any =  ([
+export default function Home({navigation}: any) {
+  const collections: { name: string; img: any; compo: any; key: number; }[] =  ([
     { name: "man collection", img: require("../assets/manModel.jpeg"), compo: Man, key: 1 },
     {
       name: "woman collection",
@@ -38,7 +39,7 @@ export default function Home() {
   ]);
 
   const Stack = createNativeStackNavigator();
-  const navigation = useNavigation();
+//   const navigation = useNavigation();
   return (
     <View style={styles.container}>
       
