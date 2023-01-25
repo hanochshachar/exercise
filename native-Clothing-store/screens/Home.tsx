@@ -1,10 +1,15 @@
 import { StatusBar } from "expo-status-bar";
-import {  FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useState } from "react";
-import { useNavigation } from '@react-navigation/native';
-
-
+import { useNavigation } from "@react-navigation/native";
 
 import manModel from "../assets/manModel.jpeg";
 import woman from "../assets/womanModel.jpg";
@@ -18,47 +23,69 @@ import Winter from "./innerScreens/Winter";
 import Summer from "./innerScreens/Summer";
 import Underwire from "./innerScreens/Underwire";
 import Shoes from "./innerScreens/Shoes";
-import Home1 from './Home'
+import Home1 from "./Home";
 
-export default function Home({navigation}: any) {
-  const collections: { name: string; img: any; compo: any; key: number; }[] =  ([
-    { name: "man collection", img: require("../assets/manModel.jpeg"), compo: Man, key: 1 },
+export default function Home({ navigation: { navigate } }: any) {
+  const collections: { name: string; img: any; compo: any; key: number }[] = [
+    {
+      name: "man collection",
+      img: require("../assets/manModel.jpeg"),
+      compo: Man,
+      key: 1,
+    },
     {
       name: "woman collection",
-      img: require("../assets/womanModel.jpg"), compo: Woman,
+      img: require("../assets/womanModel.jpg"),
+      compo: Woman,
       key: 2,
     },
-    { name: "winter collection", img: require("../assets/winter.jpg"), compo: Winter, key: 3 },
-    { name: "summer collection", img: require("../assets/summer.jpg"), compo: Summer, key: 4 },
+    {
+      name: "winter collection",
+      img: require("../assets/winter.jpg"),
+      compo: Winter,
+      key: 3,
+    },
+    {
+      name: "summer collection",
+      img: require("../assets/summer.jpg"),
+      compo: Summer,
+      key: 4,
+    },
     {
       name: "underwire collection",
-      img: require("../assets/underware.jpg"), compo: Underwire,
+      img: require("../assets/underware.jpg"),
+      compo: Underwire,
       key: 5,
     },
-    { name: "shoes collection", img: require("../assets/shoes.jpg"), compo: Shoes, key: 6 },
-  ]);
+    {
+      name: "shoes collection",
+      img: require("../assets/shoes.jpg"),
+      compo: Shoes,
+      key: 6,
+    },
+  ];
 
   const Stack = createNativeStackNavigator();
-//   const navigation = useNavigation();
+  //   const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      
-        <FlatList
-          numColumns={2}
-          data={collections}
-          renderItem={({ item }) => (
-            <>
-              
-              <TouchableOpacity onPress={() => {
-                navigation.navigate(item.compo)
-              }}>
-              <Image style={styles.image } source={item.img} />
+      <FlatList
+        numColumns={2}
+        data={collections}
+        renderItem={({ item }) => (
+          <>
+            <TouchableOpacity
+              onPress={() => {
+                navigate("Home");
+              }}
+            >
+              <Image style={styles.image} source={item.img} />
               <Text style={styles.title}>{item.name}</Text>
-              </TouchableOpacity>
-            </>
-          )}
-        />
-      
+            </TouchableOpacity>
+          </>
+        )}
+      />
+
       <StatusBar style="auto" />
     </View>
   );
