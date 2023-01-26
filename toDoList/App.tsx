@@ -18,7 +18,10 @@ export default function App() {
     <View style={styles.container}>
       <FlatList
         data={toDo}
-        renderItem={({ item }) => <Text>{item.name}</Text>}
+        renderItem={({ item }) => 
+        <TouchableOpacity>
+          <Text style={styles.item}>{item.name}</Text>
+        </TouchableOpacity> }
       />
       <StatusBar style="auto" />
     </View>
@@ -32,4 +35,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  item: {
+   marginTop: ,
+    
+    
+  }
 });
