@@ -1,4 +1,5 @@
 import { StatusBar } from "expo-status-bar";
+import  {createStackNavigator}  from '@react-navigation/stack';
 import {
   FlatList,
   Image,
@@ -9,74 +10,46 @@ import {
 } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useState } from "react";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, StackActions, useNavigationContainerRef } from "@react-navigation/native";
 
-import manModel from "../assets/manModel.jpeg";
-import woman from "../assets/womanModel.jpg";
-import winter from "../assets/winter.jpg";
-import summer from "../assets/summer.jpg";
-import underwire from "../assets/underware.jpg";
-import shoes from "../assets/shoes.jpg";
-import Man from "./innerScreens/Man";
-import Woman from "./innerScreens/Woman";
-import Winter from "./innerScreens/Winter";
-import Summer from "./innerScreens/Summer";
-import Underwire from "./innerScreens/Underwire";
-import Shoes from "./innerScreens/Shoes";
-import Home1 from "./Home";
+import Man from "./Man";
+import Woman from './Woman'
 
-export default function Home({ navigation }: any) {
-  const collections: { name: string; img: any; compo: any; key: number }[] = [
+
+export default function Home({navigation}: any) {
+
+  const navigationRef = useNavigationContainerRef()
+  
+  const collections: { name: string; img: any; compo: any; key: number }[]= [
     {
       name: "man collection",
       img: require("../assets/manModel.jpeg"),
-      compo: Man,
+      compo: "Man",
       key: 1,
-    },
+    }, 
     {
       name: "woman collection",
       img: require("../assets/womanModel.jpg"),
-      compo: Woman,
+      compo: "Woman",
       key: 2,
     },
-    {
-      name: "winter collection",
-      img: require("../assets/winter.jpg"),
-      compo: Winter,
-      key: 3,
-    },
-    {
-      name: "summer collection",
-      img: require("../assets/summer.jpg"),
-      compo: Summer,
-      key: 4,
-    },
-    {
-      name: "underwire collection",
-      img: require("../assets/underware.jpg"),
-      compo: Underwire,
-      key: 5,
-    },
-    {
-      name: "shoes collection",
-      img: require("../assets/shoes.jpg"),
-      compo: Shoes,
-      key: 6,
-    },
-  ];
+  ]
 
   const Stack = createNativeStackNavigator();
     // const navigation = useNavigation();
+    
   return (
     <View style={styles.container}>
-      <FlatList
+       <FlatList
         numColumns={2}
         data={collections}
         renderItem={({ item }) => (
           <>
-            <TouchableOpacity
+             <TouchableOpacity
               onPress={() => {
-                navigation.push(item.compo);
+                navigation.navigate('Man');
+                
+
               }}
             >
               <Image style={styles.image} source={item.img} />
