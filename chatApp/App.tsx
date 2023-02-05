@@ -3,13 +3,20 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
+type RootStackParamList ={
+  Chat: undefined;
+}
+
 import Chat from './screens/Chat';
-const stack = createStackNavigator()
+import Login from './screens/Login';
+import SignUp from './screens/Signup';
+import Home from './screens/Home'
+const stack = createStackNavigator<RootStackParamList>()
 
 const ChatStack = () => {
   return (
-    <stack.Navigator>
-      <stack.Screen name='chat' component={Chat}/>
+     <stack.Navigator screenOptions={{headerShown: false}}>
+      <stack.Screen name='Home' component={Home as any}/>
     </stack.Navigator>
   )
 }
