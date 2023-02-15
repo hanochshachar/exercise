@@ -13,8 +13,8 @@ try {
   const handleSignup = () => {
     if (email !== "" && password !== ""){
       createUserWithEmailAndPassword(auth, email, password)
-      .then(() => console.log('login success'))
-      .catch((err: any) => Alert.alert('login error', err.message))
+      .then(() => console.log('SignUp success'))
+      .catch((err: any) => Alert.alert('SignUp error', err.message))
       
     }
   }
