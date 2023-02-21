@@ -31,7 +31,7 @@ const Home = () => {
     }, [navigation])
 
     return (
-      <View>
+      <View style={styles.container}>
         <TouchableOpacity 
                 onPress={() => navigation.navigate('Chat')}
                 style={styles.chatButton}>
