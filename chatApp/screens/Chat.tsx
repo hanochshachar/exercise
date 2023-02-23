@@ -38,6 +38,11 @@ export default function Chat() {
         </TouchableOpacity>
       }
     })
+  }, [navigation])
+  useLayoutEffect(() => {
+    const collectionRef =  collection(database, 'chats')
+    const q = query(collectionRef, orderBy('createdAt', "desc"))
+    const unsubscribe = 
   })
   return <GiftedChat />;
 }
