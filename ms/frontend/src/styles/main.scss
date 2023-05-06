@@ -1,0 +1,29 @@
+.top{
+    margin: auto;
+    text-align: center;
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+}
+.images{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    text-align: center;
+    .img{
+        height: 10rem;
+        width: 15rem;
+        padding-bottom: 2rem;
+    }
+}
+
+.details{
+    position: fixed;
+    height: 20rem;
+    width: 20%;
+    margin-right: 40%;
+    margin-left: 40%;
+    background-color: antiquewhite;
+}

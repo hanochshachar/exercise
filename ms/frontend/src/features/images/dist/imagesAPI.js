@@ -36,28 +36,32 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.getImagesByCategory = void 0;
+exports.getImagesAsync = void 0;
 var axios_1 = require("axios");
-exports.getImagesByCategory = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, category, page, per, key, data, error_1;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
-            case 0:
-                _b.trys.push([0, 2, , 3]);
-                _a = req.query, category = _a.category, page = _a.page;
-                per = 9;
-                key = "36029078-1e5b5d48336178f7536ee618a";
-                return [4 /*yield*/, axios_1["default"].get("https://pixabay.com/api/?key=" + key + "&category=" + category + "&page=" + page + "&per_page=" + per)];
-            case 1:
-                data = _b.sent();
-                console.log(data.data);
-                res.send(data.data);
-                return [3 /*break*/, 3];
-            case 2:
-                error_1 = _b.sent();
-                console.error(error_1);
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
-        }
+var toolkit_1 = require("@reduxjs/toolkit");
+exports.getImagesAsync = toolkit_1.createAsyncThunk('getImages', function (_a) {
+    var category = _a.category, page = _a.page;
+    return __awaiter(void 0, void 0, void 0, function () {
+        var res, error_1;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    _b.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, axios_1["default"].get('/images/getImages', {
+                            params: {
+                                category: category,
+                                page: page
+                            }
+                        })];
+                case 1:
+                    res = _b.sent();
+                    return [2 /*return*/, res.data.hits];
+                case 2:
+                    error_1 = _b.sent();
+                    console.error(error_1);
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
+            }
+        });
     });
-}); };
+});
