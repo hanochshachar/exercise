@@ -47,15 +47,14 @@ exports.getImagesByCategory = function (req, res) { return __awaiter(void 0, voi
                 _a = req.query, category = _a.category, page = _a.page;
                 per = 9;
                 key = "36029078-1e5b5d48336178f7536ee618a";
-                return [4 /*yield*/, axios_1["default"].get("https://pixabay.com/api/?key=" + key + "&category=" + category + "&page=" + page + "&per_page=" + per)];
+                return [4 /*yield*/, axios_1["default"].get("https://pixabay.com/api/?key=" + key + "&category=" + category + "&page=" + page + "&per_page=" + per + "&order=latest")];
             case 1:
                 data = _b.sent();
-                console.log(data.data);
                 res.send(data.data);
                 return [3 /*break*/, 3];
             case 2:
                 error_1 = _b.sent();
-                console.error(error_1);
+                res.send({ error: error_1.message });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
