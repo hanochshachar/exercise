@@ -47,7 +47,7 @@ exports.getImagesByCategory = function (req, res) { return __awaiter(void 0, voi
                 _a = req.query, category = _a.category, page = _a.page;
                 per = 9;
                 key = "36029078-1e5b5d48336178f7536ee618a";
-                return [4 /*yield*/, axios_1["default"].get("https://pixabay.com/api/?key=" + key + "&category=" + category + "&page=" + page + "&per_page=" + per + "&order=latest")];
+                return [4 /*yield*/, axios_1["default"].get("https://pixabay.com/api/?key=" + key + "&category=" + category + "&page=" + page + "&per_page=" + per)];
             case 1:
                 data = _b.sent();
                 res.send(data.data);
