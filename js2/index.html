@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dice</title>
+    <style>
+        body{
+            text-align: center;
+            
+        }
+        .dice{
+
+            margin: auto;
+            margin-top: 110px;
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="handleDice()">throw</button>
+
+    <div class="dice">
+        <h1 class="number"></h1>
+    </div>
+
+    <script>
+        function handleDice() {
+            const dice = document.querySelector('.dice');
+            const number = document.querySelector('.number')
+            dice.style.height = '150px'
+            dice.style.width = '150px'
+
+
+            let intervalId = setInterval(() => {
+                let randomNumber = Math.floor(Math.random() * 6) + 1;
+                const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+                dice.style.backgroundColor = "#" + randomColor;
+                dice.style.transform = `rotate(${Date.now() / 10}deg)`;
+                number.textContent = randomNumber;
+            }, 200);
+
+            setTimeout(() => {
+                 clearInterval(intervalId);
+                 let randomNumber = Math.random() < 0.5 ? 2 : 6; 
+                 number.textContent = randomNumber;
+            }, 10000);
+
+        }
+    </script>
+</body>
+
+</html>

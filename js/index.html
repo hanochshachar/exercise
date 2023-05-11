@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Links with colors</title>
+    <ul>
+
+    </ul>
+    <script>
+        const links = [{"href":"https://google.com","text":"google"},{"href":"https://facebook.com","text":"facebook","color":"blue"},{"href":"https://twitter.com","text":"twitter","target":"_blank"},{"href":"https://tiktok.com","text":"tiktok","number1":5,"number2":"2"}];
+  
+        const ul = document.querySelector("ul");
+        for (const link of links) {
+          const li = document.createElement("li");
+          const a = document.createElement("a");
+          a.href = link.href;
+          a.textContent = link.text;
+          a.style.textDecoration = 'none';
+          if (link.color) {
+            a.style.color = link.color;
+            
+          }
+          if (link.target) {
+            a.target = link.target;
+          }
+          li.appendChild(a);
+          ul.appendChild(li);
+        }
+      </script>
+  </head>
+  <body>
+    <ul>
+       
+    </ul>
+
+    
+  </body>
+</html>
